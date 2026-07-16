@@ -60,6 +60,6 @@ export async function redirectToOriginalUrl(req: Request, res: Response) {
     } catch (error) {
         console.error(error);
 
-        res.status(500).send("Something went wrong.");
+        res.status(503).send("Something went wrong.");
     }
 }
