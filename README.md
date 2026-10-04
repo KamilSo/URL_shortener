@@ -88,3 +88,18 @@ If you change the schema later:
    ```
 
 2. Or apply the SQL yourself against the running database (for example with `psql`).
+
+## How to contribute
+
+1. Pick a [GitHub issue](../../issues) to work on (or open one if it does not exist yet).
+2. Create a **new branch** for that issue. Prefer starting from the issue page via **Development → Create a branch**, or name the branch after the issue, e.g. `2-shorten-url-validation`.
+3. Make your changes and open a pull request against `main`.
+4. In the PR description (recommended) or a commit message, link the issue with a closing keyword so GitHub connects them and closes the issue when the PR merges:
+
+   ```text
+   Fixes #2
+   ```
+
+   Also accepted: `Closes #2`, `Resolves #2`. Writing only `#2` creates a reference but does **not** auto-close the issue.
+
+Keep each PR focused on a single issue.
