@@ -20,28 +20,32 @@ class IsValidUrlTest {
             "HtTp://example.com",
     })
     void acceptsHttpRegardlessOfCase(String url) {
-        assertTrue(IsValidUrl.isValidUrl(url));
+        assertTrue(IsValidUrl.isValidHttpUrl(url));
     }
-    @Test
-    void rejectsFtpUrl() {
-        boolean result = IsValidUrl.isValidUrl("ftp://example.com");
 
-        assertFalse(result);
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "ftp://example.com",
+            "file:///tmp/example.txt",
+            "irc://irc.example.com/channel",
+            "mailto:person@example.com"
+    })
+    void rejectsUnsupportedSchemes(String url) {
+        assertFalse(IsValidUrl.isValidHttpUrl(url));
     }
 
     @Test
     void rejectsNull() {
-        boolean result = IsValidUrl.isValidUrl(null);
-
-        assertFalse(result);
+        assertFalse(IsValidUrl.isValidHttpUrl(null));
     }
+
     @ParameterizedTest
     @ValueSource(strings = {
             " ",
             "",
     })
     void rejectsEmpty(String url) {
-        assertFalse(IsValidUrl.isValidUrl(url));
+        assertFalse(IsValidUrl.isValidHttpUrl(url));
     }
 
     @ParameterizedTest
@@ -57,8 +61,6 @@ class IsValidUrlTest {
             "https://example"
     })
     void rejectsInvalidSyntax(String url) {
-        boolean result = IsValidUrl.isValidUrl(url);
-
-        assertFalse(result);
+        assertFalse(IsValidUrl.isValidHttpUrl(url));
     }
 }

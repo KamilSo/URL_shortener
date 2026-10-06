@@ -6,7 +6,7 @@ public final class IsValidUrl {
     private IsValidUrl() {
     }
 
-    public static boolean isValidUrl(String value) {
+    public static boolean isValidHttpUrl(String value) {
         try {
             URI uri = URI.create(value);
             String scheme = uri.getScheme();

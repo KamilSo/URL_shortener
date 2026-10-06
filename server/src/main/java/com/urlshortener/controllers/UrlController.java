@@ -30,7 +30,7 @@ public class UrlController {
         try {
             Object originalUrlValue = body.get("originalUrl");
 
-            if (!(originalUrlValue instanceof String originalUrl) || !IsValidUrl.isValidUrl(originalUrl)) {
+            if (!(originalUrlValue instanceof String originalUrl) || !IsValidUrl.isValidHttpUrl(originalUrl)) {
                 return ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
                         .body(Map.of("error", "Please provide a valid http or https URL."));
