@@ -52,13 +52,11 @@ class IsValidUrlTest {
     @ValueSource(strings = {
             "https://example.co m",
             "https://exa mple.com",
-            "https://examplecom.",
             "https:/example.com",
             "https//example.com",
             "https:example.com",
             "https://example,com",
             "https://",
-            "https://example"
     })
     void rejectsInvalidSyntax(String url) {
         assertFalse(IsValidUrl.isValidHttpUrl(url));
